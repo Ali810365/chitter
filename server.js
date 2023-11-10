@@ -31,11 +31,21 @@ app.post('/completions', async (req, res) => {
 
     try {
        const response =  await fetch('https://api.openai.com/v1/chat/completions', options)
-       const data = await response.json()
+       const data = await req.body
        res.send(data)
+       //console.log(data)
     } catch (error) {
         console.error(error)
     }
+})
+
+app.post('/source', (req, res) => {
+    const data = {
+        message: "Hello World!"
+        
+    }
+
+    res.send(data)
 })
 
 app.listen(PORT, () => console.log('Your server is running on ' + PORT))
